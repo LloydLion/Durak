@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace DurakUI
+namespace DurakGame
 {
     internal static class Extensions
     {

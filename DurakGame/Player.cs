@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System;
 
-namespace DurakUI
+namespace DurakGame
 {
     public class Player
     {

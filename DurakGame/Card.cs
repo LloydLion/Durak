@@ -1,6 +1,6 @@
 using System;
 
-namespace DurakUI
+namespace DurakGame
 {
     public struct Card : IComparable<Card>
     {

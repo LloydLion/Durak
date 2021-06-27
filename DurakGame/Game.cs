@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DurakUI
+namespace DurakGame
 {
     public class Game
     {

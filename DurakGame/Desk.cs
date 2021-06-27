@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DurakUI
+namespace DurakGame
 {
     public class Desk
     {

@@ -1,4 +1,4 @@
-namespace DurakUI
+namespace DurakGame
 {
     public enum Mast
     {

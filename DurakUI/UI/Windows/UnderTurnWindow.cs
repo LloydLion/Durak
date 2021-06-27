@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Linq;
+using DurakGame;
 
 namespace DurakUI.Windows
 {

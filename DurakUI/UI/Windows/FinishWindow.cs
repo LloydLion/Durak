@@ -1,3 +1,4 @@
+using DurakGame;
 using System;
 using System.Linq;
 
@@ -6,7 +7,7 @@ namespace DurakUI.Windows
     class FinishWindow : IConsoleWindow
     {        
         private WindowState state;
-        private Game game;
+        private readonly Game game;
 
 
         public FinishWindow(Game game)
