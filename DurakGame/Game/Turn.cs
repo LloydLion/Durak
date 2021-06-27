@@ -1,6 +1,6 @@
-namespace Durak
+namespace DurakUI
 {
-    struct Turn
+    public struct Turn
     {
         public Turn(Player turningPlayer, Player underPlayer)
         {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Durak
+namespace DurakUI.Windows
 {
     class TitleWindow : IConsoleWindow
     {

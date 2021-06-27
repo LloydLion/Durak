@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Durak
+namespace DurakUI
 {
-    class Game
+    public class Game
     {
-        public IReadOnlyList<IPlayerRecord> Players =>
-            players.Cast<IPlayerRecord>().ToArray();
+        public IReadOnlyCollection<Player> Players =>
+            players.ToArray();
 
-        public TurnInfo CurrentTurn => new TurnInfo(currentTurn);
+        public Turn CurrentTurn => currentTurn;
 
         public Desk Desk => desk;
 
@@ -20,9 +20,9 @@ namespace Durak
 
         private readonly PlayersCollection players;
         private Mast trumpMast;
-        private Turn currentTurn = new Turn(null, null);
+        private Turn currentTurn = new(null, null);
         private Desk desk = null;
-        private RankTable rankTable = new RankTable();
+        private readonly RankTable rankTable = new();
         private Batch lastBatch;
 
 
@@ -80,7 +80,7 @@ namespace Durak
 
         public void EndTurn(Batch batch)
         {
-            if(batch.IsClosed == false) throw new ArgumentException(nameof(batch), "Batch isn't closed");
+            if(batch.IsClosed == false) throw new ArgumentException("Batch isn't closed", nameof(batch));
             GiveCards(currentTurn.TurningPlayer);
 
             foreach (var player in players.Except(new Player[] 
@@ -119,7 +119,7 @@ namespace Durak
 
         private Player[] KickFinishedPlayers()
         {
-            List<Player> tmp = new List<Player>();
+            List<Player> tmp = new();
             foreach (var player in players)
                 if(player.Hand.Count == 0 && !player.IsFinished)
                 {

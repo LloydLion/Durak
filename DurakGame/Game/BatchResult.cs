@@ -1,6 +1,6 @@
-namespace Durak
+namespace DurakUI
 {
-    struct BatchResult
+    public struct BatchResult
     {
         public BatchResult(bool isCardsTaken)
         {

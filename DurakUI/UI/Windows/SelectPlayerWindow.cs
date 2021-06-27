@@ -1,11 +1,12 @@
 using System;
+using System.Linq;
 
-namespace Durak
+namespace DurakUI.Windows
 {
     class SelectPlayerWindow : IConsoleWindow
     {
         private WindowState state;
-        private Game game;
+        private readonly Game game;
         private Batch batch;
 
 
@@ -45,14 +46,14 @@ namespace Durak
             Console.WriteLine("===== Durak game =====");
             Console.WriteLine("Turn: " + game.CurrentTurn.TurningPlayer.Name
                 + " -> " + game.CurrentTurn.UnderPlayer.Name);
-            Console.WriteLine("Cards left: " + game.Desk.Cards.Count);
+            Console.WriteLine("Cards left: " + game.Desk.AvailableCards.Count);
             Console.WriteLine("Trump mast: " + game.TrumpMast);
             Console.WriteLine();
             Console.WriteLine("--- Select Player ---");
 
             for (int i = 0; i < game.Players.Count; i++)
             {
-                var player = game.Players[i];
+                var player = game.Players.ElementAt(i);
 
                 if(player.IsFinished) continue;
 
@@ -74,7 +75,7 @@ namespace Durak
                 
                 state.IsGoClosing = true;
 
-                var player = game.Players[res - 1];
+                var player = game.Players.ElementAt(res - 1);
                 if(player == game.CurrentTurn.UnderPlayer) 
                     Context.SetNextWindow(new UnderTurnWindow(game, batch));
                 else Context.SetNextWindow(new TurnWindow(game, batch, player));

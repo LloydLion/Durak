@@ -1,6 +1,6 @@
-namespace Durak
+namespace DurakUI
 {
-    enum Mast
+    public enum Mast
     {
         Kresti,
         Vini,

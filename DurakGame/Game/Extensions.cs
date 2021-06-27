@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace Durak
+namespace DurakUI
 {
-    static class Extensions
+    internal static class Extensions
     {
         public static T Min<T>(this IEnumerable<T> self, Func<T, int> selector, T def = default)
         {

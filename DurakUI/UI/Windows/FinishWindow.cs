@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Durak
+namespace DurakUI.Windows
 {
     class FinishWindow : IConsoleWindow
     {        

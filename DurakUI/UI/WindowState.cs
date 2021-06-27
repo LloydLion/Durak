@@ -1,4 +1,4 @@
-namespace Durak
+namespace DurakUI
 {
     struct WindowState
     {

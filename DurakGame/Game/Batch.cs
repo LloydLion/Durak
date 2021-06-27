@@ -2,39 +2,36 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Durak
+namespace DurakUI
 {
-    class Batch
+    public class Batch
     {
         public Mast Trump { get; }
 
         public bool IsClosed { get; private set; } = false;
 
-        public TurnInfo Turn => new TurnInfo(turn);
+        public Turn Turn => turn;
 
 
-        private PlayersCollection players;
         private bool isCardsTaken;
-        private Turn turn;
+        private readonly Turn turn;
 
 
-        public Batch(Turn turn, Mast trump, PlayersCollection players)
+        internal Batch(Turn turn, Mast trump, PlayersCollection _)
         {
             this.turn = turn;
             Trump = trump;
-            this.players = players;
         }
 
 
-        public CardPair PlaceCard(IPlayerRecord record, Card card)
+        public CardPair PlaceCard(Player player, Card card)
         {
             ThrowIfEnd();
 
-            var player = players.GetPlayer(record);
             if(player.Hand.Contains(card) == false)
-                throw new ArgumentException(nameof(card), "Player don't have this card");
+                throw new ArgumentException("Player don't have this card", nameof(card));
 
-            if(CanPlaceCard(record, card))
+            if(CanPlaceCard(player, card))
             {
                 var ret = new CardPair() { MainCard = card };
                 player.Hand.Remove(card);
@@ -48,7 +45,7 @@ namespace Durak
         {
             ThrowIfEnd();
             if(CanBeatCard(beat, card) == false)
-                throw new ArgumentException(nameof(card), "Can't beat pair by this card");
+                throw new ArgumentException("Can't beat pair by this card", nameof(card));
             else
             {
                 turn.UnderPlayer.Hand.Remove(card);
@@ -59,7 +56,7 @@ namespace Durak
         public bool CanBeatCard(CardPair beat, Card card)
         {
             if(turn.UnderPlayer.Hand.Contains(card) == false)
-                throw new ArgumentException(nameof(card), "Player don't have this card");
+                throw new ArgumentException("Player don't have this card", nameof(card));
 
             if(beat.SuperCard.HasValue) return false;
 
@@ -100,7 +97,7 @@ namespace Durak
                 (turn.Field.Cards.Count != 0 && turn.Field.Cards.All(s => s.SuperCard.HasValue)));
         }
 
-        public bool CanPlaceCard(IPlayerRecord placer, Card card)
+        public bool CanPlaceCard(Player placer, Card card)
         {
             var cards = turn.Field.GetAllCards();
             if(cards.Length == 0 && placer == turn.TurningPlayer) return true;

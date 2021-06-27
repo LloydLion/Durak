@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 
-namespace Durak
+namespace DurakUI
 {
-    class RankTable
+    public class RankTable
     {
-        private List<RankRecord> records = new List<RankRecord>();
+        private readonly List<RankRecord> records = new();
 
 
         public IReadOnlyCollection<RankRecord> Records => records;

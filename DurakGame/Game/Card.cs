@@ -1,12 +1,12 @@
 using System;
 
-namespace Durak
+namespace DurakUI
 {
-    struct Card : IComparable<Card>
+    public struct Card : IComparable<Card>
     {
-        public Mast Mast { get; set; }
+        public Mast Mast { get; }
 
-        public int Denomination { get; set; }
+        public int Denomination { get; }
 
 
         public Card(Mast mast, int denomination)
@@ -23,7 +23,7 @@ namespace Durak
 
         public static bool operator!=(Card card1, Card card2) => !(card1 == card2);
 
-        public override bool Equals(object obj) => obj is Card && (Card)obj == this;
+        public override bool Equals(object obj) => obj is Card card && card == this;
 
         public override int GetHashCode() => HashCode.Combine(Denomination, Mast);
 

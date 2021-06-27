@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 
-namespace Durak
+namespace DurakUI
 {
-    class Desk
+    public class Desk
     {
-        public List<Card> Cards { get; } = new List<Card>();
+        internal List<Card> Cards { get; } = new List<Card>();
+
+        public IReadOnlyCollection<Card> AvailableCards => Cards;
 
 
         public Card? PopCard()
@@ -18,13 +20,13 @@ namespace Durak
 
         public void Generate()
         {
-            List<int> generated = new List<int>();
+            List<int> generated = new();
             var random = new Random();
             
             while(generated.Count < sorted.Length)
             {
-                int newCard = 0;
-                do newCard = random.Next(sorted.Length);
+				int newCard;
+				do newCard = random.Next(sorted.Length);
                 while(generated.Contains(newCard));
 
                 generated.Add(newCard);
@@ -32,10 +34,7 @@ namespace Durak
             }
         }
 
-        private static Card[] sorted = new Card[]
-        {
-
-        };
+        private static readonly Card[] sorted;
 
         static Desk()
         {

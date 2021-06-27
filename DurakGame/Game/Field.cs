@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 
-namespace Durak
+namespace DurakUI
 {
-    class Field : IReadOnlyField
+    public class Field
     {
-        public List<CardPair> Cards { get; } = new List<CardPair>();
+        internal List<CardPair> Cards { get; } = new List<CardPair>();
 
-        IReadOnlyCollection<CardPair> IReadOnlyField.Cards => Cards;
+        public IReadOnlyCollection<CardPair> CardPairs => Cards;
 
 
         public Card[] GetAllCards()
         {
-            List<Card> cards = new List<Card>();
+            List<Card> cards = new();
 
             foreach (var pair in Cards)
                 cards.AddRange(pair.GetCards());

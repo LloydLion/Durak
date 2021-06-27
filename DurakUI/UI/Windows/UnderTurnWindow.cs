@@ -2,14 +2,14 @@ using System;
 using System.Threading;
 using System.Linq;
 
-namespace Durak
+namespace DurakUI.Windows
 {
     class UnderTurnWindow : IConsoleWindow
     { 
         private WindowState state;
-        private Game game;
-        private Batch batch;
-        private IPlayerRecord player;
+        private readonly Game game;
+        private readonly Batch batch;
+        private readonly Player player;
 
 
         public UnderTurnWindow(Game game, Batch batch)
@@ -39,14 +39,14 @@ namespace Durak
             Console.WriteLine();
             Console.WriteLine("Turn: " + game.CurrentTurn.TurningPlayer.Name
                 + " -> " + game.CurrentTurn.UnderPlayer.Name);
-            Console.WriteLine("Cards left: " + game.Desk.Cards.Count);
+            Console.WriteLine("Cards left: " + game.Desk.AvailableCards.Count);
             Console.WriteLine("Trump mast: " + game.TrumpMast);
             Console.WriteLine("Selected player: " + player.Name);
             Console.WriteLine();
             Console.WriteLine("--- Field ---");
 
             var j = 0;
-            foreach(var item in batch.Turn.Field.Cards)
+            foreach(var item in batch.Turn.Field.CardPairs)
             {
                 var main = item.MainCard;
                 Console.Write($"[{j + 1}]: " + main);
@@ -60,9 +60,9 @@ namespace Durak
             Console.WriteLine("--- Cards ---");
 
             j = 0;
-            foreach(var card in player.Hand)
+            foreach(var card in player.HandCards)
             {
-                Console.WriteLine($"[{j + 1}]: {card.ToString()}");
+                Console.WriteLine($"[{j + 1}]: {card}");
                 j++;
             }
         }
@@ -71,9 +71,9 @@ namespace Durak
         {
             if(int.TryParse(key.KeyChar.ToString(), out int res))
             {
-                if(res <= 0 || res > player.Hand.Count) return;
+                if(res <= 0 || res > player.HandCards.Count) return;
                 
-                var card = player.Hand.ElementAt(res - 1);
+                var card = player.HandCards.ElementAt(res - 1);
 
                 Console.WriteLine();
                 Console.WriteLine("=========");
@@ -84,9 +84,9 @@ namespace Durak
                 var yek = Console.ReadKey(true);
                 if(int.TryParse(yek.KeyChar.ToString(), out int ser))
                 {
-                    if(ser <= 0 || ser > batch.Turn.Field.Cards.Count) return;
+                    if(ser <= 0 || ser > batch.Turn.Field.CardPairs.Count) return;
                     
-                    var pair = batch.Turn.Field.Cards.ElementAt(ser - 1);
+                    var pair = batch.Turn.Field.CardPairs.ElementAt(ser - 1);
 
                     if(batch.CanBeatCard(pair, card)) batch.BeatCard(pair, card);
                     else

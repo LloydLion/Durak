@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace Durak
+namespace DurakUI
 {
-    class PlayersCollection : IList<Player>
+    internal class PlayersCollection : IList<Player>
     {
-        private List<Player> players;
+		private readonly List<Player> players;
 
 
         public PlayersCollection(int count)
@@ -51,12 +51,6 @@ namespace Durak
 
         public void RemoveAt(int index) =>
             throw new System.InvalidOperationException("This collection has fixed size"); 
-
-        public Player GetPlayer(IPlayerRecord record) 
-        {
-            if(record is Player player && Contains(player)) return player;
-            else throw new ArgumentException(nameof(record), "Can't get player by this record");
-        }
 
         IEnumerator IEnumerable.GetEnumerator() => players.GetEnumerator();
 

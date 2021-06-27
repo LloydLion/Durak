@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Durak
+namespace DurakUI
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var ui = new UIEngine(new TitleWindow());
+            var ui = new UIEngine(new Windows.TitleWindow());
 
             while(ui.Update()) { }
 

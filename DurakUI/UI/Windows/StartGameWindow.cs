@@ -1,6 +1,7 @@
 using System;
+using System.Linq;
 
-namespace Durak 
+namespace DurakUI.Windows 
 {
     class StartGameWindow : IConsoleWindow
     {
@@ -49,7 +50,7 @@ namespace Durak
                     {
                         Console.Write($"Enter name for player #{i + 1} - ");
                         var name = Console.ReadLine();
-                        game.Players[i].SetName(name);
+                        game.Players.ElementAt(i).SetName(name);
                     }
 
                     game.Start();

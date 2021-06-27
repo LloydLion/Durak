@@ -1,10 +1,10 @@
-namespace Durak
+namespace DurakUI
 {
-    class CardPair
+    public class CardPair
     {
-        public Card MainCard { get; set; }
+        public Card MainCard { get; internal set; }
 
-        public Card? SuperCard { get; set; }
+        public Card? SuperCard { get; internal set; }
 
 
         public bool HasCard(Card card) =>

@@ -1,6 +1,6 @@
-namespace Durak
+namespace DurakUI
 {
-    struct RankRecord
+    public struct RankRecord
     {
         public RankRecord(Player[] player)
         {
@@ -10,6 +10,6 @@ namespace Durak
 
 
         public Player[] Players { get; }
-        public int Place { get; set; }
+        public int Place { get; internal set; }
     }
 }
