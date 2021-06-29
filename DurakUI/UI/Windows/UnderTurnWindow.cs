@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Linq;
 using DurakGame;
+using LC = DurakUI.LocaleDictinary;
 
 namespace DurakUI.Windows
 {
@@ -34,17 +35,17 @@ namespace DurakUI.Windows
 
         public void Show()
         {
-            Console.WriteLine("===== Durak game =====");
-            Console.WriteLine("Press Esc to exit");
-            Console.WriteLine("Select card and beat");
+            Console.WriteLine(LC.Default["Durak game title"]);
+            Console.WriteLine(LC.Default["Press Esc to exit"]);
+            Console.WriteLine(LC.Default["Select card and beat"]);
             Console.WriteLine();
-            Console.WriteLine("Turn: " + game.CurrentTurn.TurningPlayer.Name
-                + " -> " + game.CurrentTurn.UnderPlayer.Name);
-            Console.WriteLine("Cards left: " + game.Desk.AvailableCards.Count);
-            Console.WriteLine("Trump mast: " + game.TrumpMast);
-            Console.WriteLine("Selected player: " + player.Name);
+            Console.WriteLine(LC.Default["Turn"] + ": " + game.CurrentTurn.TurningPlayer.Name
+                 + " -> " + game.CurrentTurn.UnderPlayer.Name);
+            Console.WriteLine(LC.Default["Cards left"] + ": " + game.Desk.AvailableCards.Count);
+            Console.WriteLine(LC.Default["Trump mast"] + ": " + game.TrumpMast);
+            Console.WriteLine(LC.Default["Selected player"] + ": " + player.Name);
             Console.WriteLine();
-            Console.WriteLine("--- Field ---");
+            Console.WriteLine(LC.Default["Field header"]);
 
             var j = 0;
             foreach(var item in batch.Turn.Field.CardPairs)
@@ -58,7 +59,7 @@ namespace DurakUI.Windows
             }
 
             Console.WriteLine();
-            Console.WriteLine("--- Cards ---");
+            Console.WriteLine(LC.Default["Cards header"]);
 
             j = 0;
             foreach(var card in player.HandCards)
@@ -70,16 +71,16 @@ namespace DurakUI.Windows
 
         public void Update(ConsoleKeyInfo key)
         {
-            if(int.TryParse(key.KeyChar.ToString(), out int res))
+            if (int.TryParse(key.KeyChar.ToString(), out int res))
             {
-                if(res <= 0 || res > player.HandCards.Count) return;
-                
+                if (res <= 0 || res > player.HandCards.Count) return;
+
                 var card = player.HandCards.ElementAt(res - 1);
 
                 Console.WriteLine();
                 Console.WriteLine("=========");
-                Console.WriteLine($"Card selected: [{res}] {card}");
-                Console.WriteLine($"Select card to beat");
+                Console.WriteLine(LC.Default["Card selected"] + $": [{res}] {card}");
+                Console.WriteLine(LC.Default["Select card to beat"]);
                 Console.WriteLine("=========");
 
                 var yek = Console.ReadKey(true);
@@ -92,7 +93,7 @@ namespace DurakUI.Windows
                     if(batch.CanBeatCard(pair, card)) batch.BeatCard(pair, card);
                     else
                     {
-                        Console.WriteLine("Invalid card");
+                        Console.WriteLine(LC.Default["Invalid card"]);
                         Thread.Sleep(1000);
                     }
 

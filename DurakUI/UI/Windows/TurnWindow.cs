@@ -1,6 +1,7 @@
 using DurakGame;
 using System;
 using System.Linq;
+using LC = DurakUI.LocaleDictinary;
 
 namespace DurakUI.Windows
 {
@@ -33,17 +34,17 @@ namespace DurakUI.Windows
 
         public void Show()
         {
-            Console.WriteLine("===== Durak game =====");
-            Console.WriteLine("Press Esc to exit");
-            Console.WriteLine("Select card and turn");
+            Console.WriteLine(LC.Default["Durak game title"]);
+            Console.WriteLine(LC.Default["Press Esc to exit"]);
+            Console.WriteLine(LC.Default["Select card and turn"]);
             Console.WriteLine();
-            Console.WriteLine("Turn: " + game.CurrentTurn.TurningPlayer.Name
+            Console.WriteLine(LC.Default["Turn"] + ": " + game.CurrentTurn.TurningPlayer.Name
                 + " -> " + game.CurrentTurn.UnderPlayer.Name);
-            Console.WriteLine("Cards left: " + game.Desk.AvailableCards.Count);
-            Console.WriteLine("Trump mast: " + game.TrumpMast);
-            Console.WriteLine("Selected player: " + player.Name);
+            Console.WriteLine(LC.Default["Cards left"] + ": " + game.Desk.AvailableCards.Count);
+            Console.WriteLine(LC.Default["Trump mast"] + ": " + game.TrumpMast);
+            Console.WriteLine(LC.Default["Selected player"] + ": " + player.Name);
             Console.WriteLine();
-            Console.WriteLine("--- Field ---");
+            Console.WriteLine(LC.Default["Field header"]);
 
             foreach(var item in batch.Turn.Field.CardPairs)
             {
@@ -55,7 +56,7 @@ namespace DurakUI.Windows
             }
 
             Console.WriteLine();
-            Console.WriteLine("--- Cards ---");
+            Console.WriteLine(LC.Default["Cards header"]);
             
             int j = 0;
             foreach(var card in player.HandCards)

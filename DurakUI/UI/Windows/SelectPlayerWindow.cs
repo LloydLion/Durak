@@ -1,6 +1,7 @@
 using DurakGame;
 using System;
 using System.Linq;
+using LC = DurakUI.LocaleDictinary;
 
 namespace DurakUI.Windows
 {
@@ -44,13 +45,13 @@ namespace DurakUI.Windows
                 else batch = game.DoTurn();
             }
 
-            Console.WriteLine("===== Durak game =====");
-            Console.WriteLine("Turn: " + game.CurrentTurn.TurningPlayer.Name
+            Console.WriteLine(LC.Default["Durak game title"]);
+            Console.WriteLine(LC.Default["Turn"] + ": " + game.CurrentTurn.TurningPlayer.Name
                 + " -> " + game.CurrentTurn.UnderPlayer.Name);
-            Console.WriteLine("Cards left: " + game.Desk.AvailableCards.Count);
-            Console.WriteLine("Trump mast: " + game.TrumpMast);
+            Console.WriteLine(LC.Default["Cards left"] + ": " + game.Desk.AvailableCards.Count);
+            Console.WriteLine(LC.Default["Trump mast"] + ": " + game.TrumpMast);
             Console.WriteLine();
-            Console.WriteLine("--- Select Player ---");
+            Console.WriteLine(LC.Default["Select player header"]);
 
             for (int i = 0; i < game.Players.Count; i++)
             {

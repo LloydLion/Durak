@@ -1,4 +1,5 @@
 using System;
+using LC = DurakUI.LocaleDictinary;
 
 namespace DurakUI.Windows
 {
@@ -21,13 +22,13 @@ namespace DurakUI.Windows
         {
             Console.WriteLine("============================");
             Console.WriteLine();
-            Console.WriteLine("Welcome to Durak game");
+            Console.WriteLine(LC.Default["Welcome to Durak game"]);
             Console.WriteLine();
             Console.WriteLine("============================");
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine("Press enter to start game");
+            Console.WriteLine(LC.Default["Press enter to countine"]);
         }
 
         public void Update(ConsoleKeyInfo key)

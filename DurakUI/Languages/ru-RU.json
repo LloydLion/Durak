@@ -1,0 +1,23 @@
+﻿{
+  "Press any key to countine": "Нажмите любую клавишу для продолжения",
+  "Game end title": "=== Конец Игры ===",
+  "Durak game title": "==== Игра Дурак ====",
+  "Turn": "Ход",
+  "Cards left": "Осталось карт",
+  "Trump mast": "Козырная масть",
+  "Select player header": "--- Выберете Игрока ---",
+  "Enter players count title": "Введите кол-во игроков (<10)",
+  "Setted players count": "Кол-во игроков установлено",
+  "Press enter to countine": "Нажмите клавишу Enter для продолжения",
+  "Enter name for player": "Введите имя для игрока",
+  "Welcome to Durak game": "Добро пожаловать в игру дурак",
+  "Press Esc to exit": "Нажмите клавишу Esc для выхода",
+  "Select card and turn": "Выберете карту и ходите",
+  "Selected player": "Выбранный игрок",
+  "Field header": "--- Поле ---",
+  "Cards header": "--- Карты ---",
+  "Select card and beat": "Выберете карту и бейтесь",
+  "Select card to beat": "Выберете карту для покрытия",
+  "Card selected": "Карта выбрана"
+  //"Invalid card": ""
+}

@@ -28,7 +28,7 @@ namespace DurakUI.Windows
 
         public void Show()
         {
-            Console.WriteLine("=== Game end ===");
+            Console.WriteLine(LocaleDictinary.Default["Game end title"]);
             foreach (var record in game.GetResults().Records)
             {
                 Console.Write(record.Place + ": ");
@@ -43,7 +43,7 @@ namespace DurakUI.Windows
             }
 
             Console.WriteLine();
-            Console.WriteLine("Press any key to countine");
+            Console.WriteLine(LocaleDictinary.Default["Press any key to countine"]);
         }
 
         public void Update(ConsoleKeyInfo key)

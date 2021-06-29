@@ -1,6 +1,7 @@
 using DurakGame;
 using System;
 using System.Linq;
+using LC = DurakUI.LocaleDictinary;
 
 namespace DurakUI.Windows 
 {
@@ -23,7 +24,7 @@ namespace DurakUI.Windows
         public void Show()
         {
             Console.WriteLine("====================");
-            Console.WriteLine("Enter players count (<10)");
+            Console.WriteLine(LC.Default["Enter players count title"]);
             Console.WriteLine("====================");
         }
 
@@ -37,8 +38,8 @@ namespace DurakUI.Windows
                     
                     game = new Game(res);
 
-                    Console.WriteLine("Setted players count : " + res);
-                    Console.WriteLine("Press enter to countine");
+                    Console.WriteLine(LC.Default["Setted players count"] + " : " + res);
+                    Console.WriteLine(LC.Default["Press enter to countine"]);
                     Console.WriteLine("====================");
                     
                 }
@@ -49,7 +50,7 @@ namespace DurakUI.Windows
                 {
                     for (int i = 0; i < game.Players.Count; i++)
                     {
-                        Console.Write($"Enter name for player #{i + 1} - ");
+                        Console.Write(LC.Default["Enter name for player"] + $" #{i + 1} - ");
                         var name = Console.ReadLine();
                         game.Players.ElementAt(i).SetName(name);
                     }
